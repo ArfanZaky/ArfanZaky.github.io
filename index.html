@@ -4,30 +4,136 @@
     <meta charset="UTF-8">
     <title>Mantra Hujan - Kobo Kanaera</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: #042104;
+        animation: animateBackground 10s linear infinite;
+        }
+        @keyframes animateBackground {
+        0% {
+        filter: hue-rotate(0deg);
+        }
+        100% {
+        filter: hue-rotate(360deg);
+        }
+        }
+        section .loader {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        }
+        section .loader span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: rotate(calc(18deg * var(--i)));
+        }
+        section .loader span::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 15px;
+        height: 15px;
+        background: #00ff0a;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #00ff0a,
+        0 0 20px #00ff0a,
+        0 0 40px #00ff0a,
+        0 0 80px #00ff0a,
+        0 0 100px #00ff0a;
+        animation: animate 2s linear infinite;
+        animation-delay: calc(0.1s * var(--i));
+        }
+        @keyframes animate {
+        0% {
+        transform: scale(1);
+        }
+        80%,100% {
+        transform: scale(0);
+        }
+        }
+        .loading-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: large;
+            color : white;
+        }
+        </style>
 </head>
 <body>
-    <div class="rain"></div>
-    <div class="lightining"></div>
  
-    <audio muted controls loop="true" id="audio" id="myAudio">
-        <source src= "mantra-hujan.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-    <!-- <iframe src="mantra-hujan.mp3" allow="autoplay" loop="true" style="display:none" id="iframeAudio">
-    </iframe>  -->
+    <section id="opening">
+        <div class="loader">
+            <span class="loading-button">Click Me!</span>
+        <span style="--i:1"></span>
+        <span style="--i:2;"></span>
+        <span style="--i:3;"></span>
+        <span style="--i:4;"></span>
+        <span style="--i:5;"></span>
+        <span style="--i:6;"></span>
+        <span style="--i:7;"></span>
+        <span style="--i:8;"></span>
+        <span style="--i:9;"></span>
+        <span style="--i:10;"></span>
+        <span style="--i:11;"></span>
+        <span style="--i:12;"></span>
+        <span style="--i:13;"></span>
+        <span style="--i:14;"></span>
+        <span style="--i:15;"></span>
+        <span style="--i:16;"></span>
+        <span style="--i:17;"></span>
+        <span style="--i:18;"></span>
+        <span style="--i:19;"></span>
+        <span style="--i:20;"></span>
+        </div>
+    </section>
+    <div id="kobo" style="display:none">
+        <div class="rain"></div>
+        <div class="lightining"></div>
+        <audio  hidden controls loop="true" id="audio" id="myAudio">
+            <source src= "mantra-hujan.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+    </div>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        var promise = document.querySelector('audio').play();
+      
         document.addEventListener('click', () => {
-            document.querySelector('audio').muted = false; 
+            setTimeout(function() {
+                document.querySelector('audio').play();
+            }, 3000);
         });
-        if (promise !== undefined) {
-        promise.then(_ => {
-            console.log('playing');
-        }).catch(error => {
-            console.log(error);
+        // if (promise !== undefined) {
+        // promise.then(_ => {
+        //     console.log('playing');
+        // }).catch(error => {
+        //     console.log(error);
         
-        });
-        }
+        // });
+        // }
     </script>
+
+    <script>
+          document.addEventListener('click', () => {
+            $('#opening').fadeOut(3000);
+            $('#kobo').fadeIn('slow');
+        });
+    </script>
+
 </body>
 </html>

@@ -1,9 +1,12 @@
-body{
+
+
+#kobo {
     margin: 0;
     padding: 0;
     background-image: url(kobo.jpg);
     background-size: cover;
 }
+
 .rain{
     height: 100vh;
     background-image: url(rain.png);
