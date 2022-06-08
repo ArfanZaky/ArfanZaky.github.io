@@ -9,11 +9,23 @@
     <div class="rain"></div>
     <div class="lightining"></div>
  
-    <!-- <audio hidden controls loop="true" autoplay="true" id="myAudio">
+    <audio  controls loop="true" id="audio" id="myAudio">
         <source src= "mantra-hujan.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
-      </audio> -->
-    <iframe src="mantra-hujan.mp3" allow="autoplay" loop="true" style="display:none" id="iframeAudio">
-    </iframe> 
+      </audio>
+    <!-- <iframe src="mantra-hujan.mp3" allow="autoplay" loop="true" style="display:none" id="iframeAudio">
+    </iframe>  -->
+    <script>
+        var promise = document.querySelector('audio').play();
+
+        if (promise !== undefined) {
+        promise.then(_ => {
+            console.log('playing');
+        }).catch(error => {
+            console.log(error);
+        
+        });
+        }
+    </script>
 </body>
 </html>
